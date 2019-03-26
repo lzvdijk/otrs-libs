@@ -5,67 +5,71 @@ A Python 3.x module to interact with OTRS (6.0) REST webservices. Contains vario
 ## Functions 
 
 ### Generic
-
+Setup connection to OTRS webservice-based API (REST):
 ```python
 __init__(self, otrs_user=None, otrs_pass=None, ssl_verify=True)
 ```
-Setup connection to OTRS webservice-based API (REST)
 
+
+Set OTRS address:
 ```python
 set_url(self, url)
 ```
 
-Set OTRS address
 
+Set OTRS user:
 ```python
 set_user(self, user)
 ```
 
-Set OTRS user
 
+Set OTRS password:
 ```python
 set_pass(self, password)
 ```
 
-Set OTRS password
 
+Set SSL verification on/off (takes a boolean input):
 ```python
 set_ssl(self, verify)
 ```
 
-Set SSL verification on/off (takes a boolean input)
-
 ### Ticket searching
-
+Search for a ticket based on ticket number:
 ```python
 search_ticket_number(self, searchvalue)
 ```
-Search for a ticket based on ticket number
 
+
+Search for a ticket based on ticket id:
 ```python
 search_ticket_id(self, searchvalue)
 ```
-Search for a ticket based on ticket id
 
+
+Search for a ticket based on ticket title (only):
 ```python
 search_ticket_title(self, searchvalue)
 ```
-Search for a ticket based on ticket title (only)
 
+
+Search for a ticket based on text in ticket articles:
 ```python
 search_ticket_text(self, searchvalue)
 ```
-Search for a ticket based on text in ticket articles
 
+
+Search for a ticket based on ticket queue:
+```python
+tbd
+```
+
+
+Search for a ticket based on ticket owner:
 ```python
 
 ```
-Search for a ticket based on ticket queue
 
-```python
-
-```
-Search for a ticket based on ticket owner
 
 ### Ticket object manipulation
 
@@ -82,22 +86,31 @@ Update ticket state
 Move ticket to queue
 
 ### Ticket information retrieval
+Retrieve a formatted summary of text contained in an article (owner, last article, relevant free fields):
 ```python
 get_ticket_text(self, ticket)
 ```
-Retrieve a formatted summary of text contained in an article (owner, last article, relevant free fields)
 
+
+Retrieve ticket owner:
 ```python
 
 ```
-Retrieve ticket owner
 
+
+Retrieve ticket creation timestamp:
 ```python
 
 ```
-Retrieve ticket time
 
+
+Retrieve ticket 'last modified' timestamp:
 ```python
 
 ```
-Retrieve ticket JSON
+
+
+Retrieve ticket JSON:
+```python
+
+```

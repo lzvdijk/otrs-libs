@@ -1,5 +1,4 @@
 """
-
 Small Python module built for reusing various OTRS 6.0 api calls
 
 """
@@ -50,6 +49,23 @@ class OTRSApi:
     #     ticket1 = self.get_ticket(ticket1_id)
     #     ticket2 = self.get_ticket(ticket2_id)
 
+    def do_request(self, request_url, json_payload):
+        """
+        Handler for all the other requests you want to throw at OTRS
+        """
+        try:
+            req = requests.post(request_url,
+                                json=json_payload,
+                                # SSL verification
+                                verify=self.ssl_verify)
+        except Exception as err:
+            raise err
+
+        # if we get something cool, jsonify & return it
+        if not req.raise_for_status():
+            return json.loads(req.content.decode('utf-8'))
+        # otherwise return the error code
+        return req.status_code()
 
     def update_ticket_state(self, ticket_id, state):
         """
@@ -121,7 +137,7 @@ class OTRSApi:
                 raise err
 
             if req.raise_for_status():
-                    return req.status_code()
+                return req.status_code()
 
             # no ticketID implies the json is invalid
             if "TicketID" in json.loads(req.content.decode('utf-8')):
